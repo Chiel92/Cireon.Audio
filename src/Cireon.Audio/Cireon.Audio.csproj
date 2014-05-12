@@ -35,10 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NVorbis">
-      <HintPath>..\..\libs\NVorbis.dll</HintPath>
+      <HintPath>..\..\..\binaries\NVorbis.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK">
-      <HintPath>..\..\libs\OpenTK.dll</HintPath>
+      <HintPath>..\..\..\binaries\OpenTK.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
