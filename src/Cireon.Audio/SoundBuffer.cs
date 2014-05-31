@@ -107,9 +107,20 @@ namespace Cireon.Audio
         /// </summary>
         /// <param name="file">The file to load the data from.</param>
         /// <returns>A SoundBuffer object containing the data from the specified file.</returns>
+        [Obsolete("This method is obsolete. Please use SoundBuffer.FromOgg() instead.")]
         public static SoundBuffer FromFile(string file)
         {
-            return SoundBuffer.FromFile(File.OpenRead(file));
+            return SoundBuffer.FromOgg(file);
+        }
+
+        /// <summary>
+        /// Creates a new soundbuffer from an ogg-file.
+        /// </summary>
+        /// <param name="file">The file to load the data from.</param>
+        /// <returns>A SoundBuffer object containing the data from the specified file.</returns>
+        public static SoundBuffer FromOgg(string file)
+        {
+            return SoundBuffer.FromOgg(File.OpenRead(file));
         }
 
         /// <summary>
@@ -117,7 +128,18 @@ namespace Cireon.Audio
         /// </summary>
         /// <param name="file">The file to load the data from.</param>
         /// <returns>A SoundBuffer object containing the data from the specified file.</returns>
+        [Obsolete("This method is obsolete. Please use SoundBuffer.FromOgg() instead.")]
         public static SoundBuffer FromFile(Stream file)
+        {
+            return SoundBuffer.FromOgg(file);
+        }
+
+        /// <summary>
+        /// Creates a new soundbuffer from an ogg-file.
+        /// </summary>
+        /// <param name="file">The file to load the data from.</param>
+        /// <returns>A SoundBuffer object containing the data from the specified file.</returns>
+        public static SoundBuffer FromOgg(Stream file)
         {
             var buffers = new List<short[]>();
 
@@ -139,7 +161,7 @@ namespace Cireon.Audio
                     // Samples are interleaved (chan0, chan1, chan0, chan1, etc.)
 
                     // Use the OggStreamer method to cast to the right format
-                    var castBuffer = new short[16384];
+                    var castBuffer = new short[count];
                     SoundBuffer.CastBuffer(buffer, castBuffer, count);
                     buffers.Add(castBuffer);
                 }
